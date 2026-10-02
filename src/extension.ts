@@ -1,9 +1,13 @@
 import * as vscode from 'vscode';
+import { labels } from './converter';
 import { ConverterHoverProvider, COPY_COMMAND, REPLACE_WITH_COMMAND, resolveTarget } from './hover';
 import { replaceInteractive, replaceWith } from './replace';
 import { ConverterPanel } from './panel';
 
 export function activate(context: vscode.ExtensionContext): void {
+  labels.twosComplement = vscode.l10n.t("two's complement");
+  labels.hexBytes = vscode.l10n.t('HEX bytes');
+
   const hover = new ConverterHoverProvider();
 
   context.subscriptions.push(
@@ -11,7 +15,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
     vscode.commands.registerTextEditorCommand('hexConverter.showPopup', async (editor) => {
       if (!resolveTarget(editor.document, editor.selection.active)) {
-        vscode.window.setStatusBarMessage('$(arrow-swap) Hex Converter: 変換できる値が見つかりません', 3000);
+        vscode.window.setStatusBarMessage(`$(arrow-swap) ${vscode.l10n.t('Hex Converter: no convertible value found')}`, 3000);
         return;
       }
       hover.force();
@@ -32,7 +36,7 @@ export function activate(context: vscode.ExtensionContext): void {
         return;
       }
       await vscode.env.clipboard.writeText(text);
-      vscode.window.setStatusBarMessage(`$(check) コピーしました: ${text}`, 2000);
+      vscode.window.setStatusBarMessage(`$(check) ${vscode.l10n.t('Copied: {0}', text)}`, 2000);
     }),
   );
 }

@@ -40,13 +40,13 @@ function code(text: string): string {
 
 function copyLink(text: string): string {
   const args = encodeURIComponent(JSON.stringify([text]));
-  return `[$(copy)](command:${COPY_COMMAND}?${args} "コピー")`;
+  return `[$(copy)](command:${COPY_COMMAND}?${args} "${vscode.l10n.t('Copy')}")`;
 }
 
 function replaceLink(document: vscode.TextDocument, range: vscode.Range, text: string): string {
   const position = [range.start.line, range.start.character, range.end.line, range.end.character];
   const args = encodeURIComponent(JSON.stringify([document.uri.toString(), position, text]));
-  return `[$(replace)](command:${REPLACE_WITH_COMMAND}?${args} "この値に置換")`;
+  return `[$(replace)](command:${REPLACE_WITH_COMMAND}?${args} "${vscode.l10n.t('Replace with this value')}")`;
 }
 
 export function renderMarkdown(document: vscode.TextDocument, { sections, range }: Target): vscode.MarkdownString {
@@ -58,7 +58,8 @@ export function renderMarkdown(document: vscode.TextDocument, { sections, range 
       md.appendMarkdown('\n\n---\n\n');
     }
     const detail = section.detail ? ` &nbsp;·&nbsp; ${escapeMarkdown(section.detail)}` : '';
-    md.appendMarkdown(`$(arrow-swap) **${escapeMarkdown(section.title)}** として変換${detail}\n\n`);
+    const heading = vscode.l10n.t('As {0}', `**${escapeMarkdown(section.title)}**`);
+    md.appendMarkdown(`$(arrow-swap) ${heading}${detail}\n\n`);
     md.appendMarkdown('| | | | |\n|:--|:--|:-:|:-:|\n');
     for (const row of section.rows) {
       const value = row.copy ?? row.text;

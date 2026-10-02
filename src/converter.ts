@@ -27,7 +27,13 @@ export interface Token {
   end: number;
 }
 
-const BASE_NAME: Record<Base, string> = { 2: 'BIN', 8: 'OCT', 10: 'DEC', 16: 'HEX' };
+/** User-facing strings; the extension swaps in localized versions on activation. */
+export const labels = {
+  twosComplement: "two's complement",
+  hexBytes: 'HEX bytes',
+};
+
+const BASE_NAME:Record<Base, string> = { 2: 'BIN', 8: 'OCT', 10: 'DEC', 16: 'HEX' };
 const BASE_PREFIX: Record<Base, string> = { 2: '0b', 8: '0o', 10: '', 16: '0x' };
 const BASE_DIGITS: Record<Base, RegExp> = {
   2: /^[01]+$/,
@@ -168,7 +174,7 @@ function describeNegative(value: bigint): Section {
       { label: `UINT${width}`, text: twos.toString(10) },
     );
   }
-  return { title: 'DEC', detail: width ? `2の補数 · ${width} bit` : undefined, rows };
+  return { title: 'DEC', detail: width ? `${labels.twosComplement} · ${width} bit` : undefined, rows };
 }
 
 function describeText(text: string): Section | undefined {
@@ -198,7 +204,7 @@ function describeByteSequence(text: string): Section | undefined {
   }
   const decoded = String.fromCharCode(...bytes);
   return {
-    title: 'HEX バイト列',
+    title: labels.hexBytes,
     detail: `${bytes.length} byte`,
     rows: [
       { label: 'ASCII', text: `"${decoded}"`, copy: decoded },

@@ -1,56 +1,55 @@
 # Hex Converter
 
-10進数・16進数・2進数・ASCII を、エディタから離れずに変換する VS Code 拡張機能です。
+Convert between decimal, hex, binary and ASCII without leaving the editor.
 
-## 機能
+[日本語の説明はこちら](https://github.com/nakayams/hex-converter/blob/main/README.ja.md)
 
-### ホバーで変換
+## Features
 
-数値リテラルにマウスを乗せると、DEC / HEX / BIN / OCT と、該当する場合は符号付きの値・ASCII 文字が表示されます。各行のコピーアイコンでクリップボードにコピーできます。
+### Convert on hover
 
-対応する書式: `255` / `0xFF` / `0b1010_1010` / `0o17` / `0FFh` / `8'hFF` (Verilog) / `255UL`・`10n` などの接尾辞付き
+Hover over a number literal to see it as DEC / HEX / BIN / OCT, plus the signed value and ASCII character where they apply. Each row has an icon to copy the value and one to replace the literal with it.
 
-### ショートカットで変換
+Supported forms: `255`, `0xFF`, `0b1010_1010`, `0o17`, `0FFh`, `8'hFF` (Verilog), and suffixed literals such as `255UL` or `10n`.
 
-テキストを選択(またはカーソルを数値の上に置いて)`Ctrl+Alt+H` を押すと、同じポップアップが表示されます。
+### Convert by shortcut
 
-選択範囲は接頭辞がなくても変換できます。
+Select some text (or put the cursor on a number) and press `Ctrl+Alt+H` to show the same popup.
 
-| 選択したテキスト | 表示される内容 |
+A selection does not need a prefix:
+
+| Selected text | What you get |
 |:--|:--|
-| `FF` | HEX として解釈した値と、文字列としての ASCII コード |
-| `10` | DEC / HEX / BIN それぞれとして解釈した値 |
-| `-1` | 2 の補数表現 |
-| `Hello` | 各文字の ASCII コード (HEX / DEC / BIN) |
-| `48 65 6C 6C 6F` | バイト列をデコードした文字列 |
+| `FF` | The value read as HEX, and the ASCII codes of the text |
+| `10` | The value read as DEC, HEX and BIN |
+| `-1` | Two's complement representation |
+| `Hello` | ASCII codes of each character (HEX / DEC / BIN) |
+| `48 65 6C 6C 6F` | The byte sequence decoded to text |
 
-### その場で置換
+### Replace in place
 
-テキストを選択(またはカーソルを数値の上に置いて)`Ctrl+Alt+J` を押すと、変換候補の一覧が出ます。選んだ値でエディタ上のテキストが置き換わります。複数カーソルの場合は、すべての箇所を同じ形式に置換します。
+Select some text (or put the cursor on a number) and press `Ctrl+Alt+J` to pick a converted value from a list; the text in the editor is replaced with it. With multiple cursors, every location is converted to the same form.
 
-ホバーやポップアップの各行にある置換アイコンからも、同じ置換ができます。
+### Converter panel
 
-### コンバーター画面
+Open it with `Ctrl+Alt+Shift+H` or **Hex Converter: Open Converter** from the Command Palette. If text is selected, the panel starts with that value.
 
-`Ctrl+Alt+Shift+H`、またはコマンドパレットの **Hex Converter: コンバーターを開く** で開きます。テキストを選択した状態で開くと、その値が入力されます。
+- **Number**: type in any of DEC / HEX / BIN / OCT / ASCII and the others update. Switch between 8 / 16 / 32 / 64 bit, click bits to toggle them, and see the signed value.
+- **Text ⇄ ASCII codes**: convert between text and HEX / DEC / BIN byte sequences in either direction.
 
-- **数値**: DEC / HEX / BIN / OCT / ASCII のどの欄に入力しても他の欄が更新されます。8 / 16 / 32 / 64 bit の切り替え、ビットのクリック反転、符号付き表示に対応しています。
-- **テキスト ⇄ ASCII コード**: 文字列と、HEX / DEC / BIN のバイト列を相互に変換します。
+## Settings
 
-## 設定
-
-| 設定 | 既定値 | 説明 |
+| Setting | Default | Description |
 |:--|:--|:--|
-| `hexConverter.hover.enabled` | `true` | マウスホバーで変換値を表示する |
-| `hexConverter.hover.decimal` | `true` | 接頭辞のない 10 進数にもホバーを表示する |
+| `hexConverter.hover.enabled` | `true` | Show conversions when hovering with the mouse |
+| `hexConverter.hover.decimal` | `true` | Also show the hover for decimal numbers without a prefix |
 
-どちらを無効にしても、ショートカットでのポップアップは表示されます。
+The shortcut popup works even when these are turned off.
 
-## 開発
+## Language
 
-```
-npm install
-npm run compile
-```
+The UI is available in English and Japanese and follows the display language of VS Code.
 
-VS Code でこのフォルダを開き、`F5` で拡張機能開発ホストが起動します。
+## License
+
+[MIT](https://github.com/nakayams/hex-converter/blob/main/LICENSE)

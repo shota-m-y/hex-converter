@@ -1,0 +1,10 @@
+{
+  "extension.description": "Convert between decimal, hex, binary and ASCII on hover, by shortcut, or in a converter panel.",
+  "command.showPopup": "Show Conversions for Selection / Cursor",
+  "command.openConverter": "Open Converter",
+  "command.replace": "Convert and Replace Selection / Value at Cursor",
+  "command.copy": "Copy Value",
+  "command.replaceWith": "Replace Value",
+  "config.hover.enabled": "Show conversions when hovering with the mouse.",
+  "config.hover.decimal": "Also show the hover for decimal numbers without a prefix. (Does not affect the shortcut popup.)"
+}

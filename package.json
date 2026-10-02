@@ -1,12 +1,21 @@
 {
   "name": "hex-converter",
   "displayName": "Hex Converter",
-  "description": "10進数・16進数・2進数・ASCII をホバーやショートカットで素早く変換",
+  "description": "%extension.description%",
   "version": "0.1.0",
   "publisher": "shota",
   "license": "MIT",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nakayams/hex-converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nakayams/hex-converter/issues"
+  },
+  "homepage": "https://github.com/nakayams/hex-converter#readme",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.82.0"
   },
   "categories": [
     "Other"
@@ -22,32 +31,33 @@
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
+  "l10n": "./l10n",
   "contributes": {
     "commands": [
       {
         "command": "hexConverter.showPopup",
-        "title": "選択範囲 / カーソル位置の変換値をポップアップ表示",
+        "title": "%command.showPopup%",
         "category": "Hex Converter"
       },
       {
         "command": "hexConverter.openConverter",
-        "title": "コンバーターを開く",
+        "title": "%command.openConverter%",
         "category": "Hex Converter",
         "icon": "$(arrow-swap)"
       },
       {
         "command": "hexConverter.replace",
-        "title": "選択範囲 / カーソル位置の値を変換して置換",
+        "title": "%command.replace%",
         "category": "Hex Converter"
       },
       {
         "command": "hexConverter.copy",
-        "title": "値をコピー",
+        "title": "%command.copy%",
         "category": "Hex Converter"
       },
       {
         "command": "hexConverter.replaceWith",
-        "title": "値を置換",
+        "title": "%command.replaceWith%",
         "category": "Hex Converter"
       }
     ],
@@ -100,12 +110,12 @@
         "hexConverter.hover.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "マウスホバーで変換値を表示する。"
+          "description": "%config.hover.enabled%"
         },
         "hexConverter.hover.decimal": {
           "type": "boolean",
           "default": true,
-          "description": "接頭辞のない 10 進数にもホバーを表示する。(ショートカットでの表示には影響しません)"
+          "description": "%config.hover.decimal%"
         }
       }
     }
@@ -117,7 +127,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.18.0",
-    "@types/vscode": "^1.80.0",
+    "@types/vscode": "~1.82.0",
     "typescript": "~5.4.5"
   }
 }

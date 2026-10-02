@@ -18,7 +18,7 @@ export async function replaceInteractive(editor: vscode.TextEditor): Promise<voi
     .map((selection) => resolveTarget(document, selection.active))
     .filter((target): target is Target => target !== undefined);
   if (!targets.length) {
-    vscode.window.setStatusBarMessage('$(arrow-swap) Hex Converter: 変換できる値が見つかりません', 3000);
+    vscode.window.setStatusBarMessage(`$(arrow-swap) ${vscode.l10n.t('Hex Converter: no convertible value found')}`, 3000);
     return;
   }
 
@@ -40,7 +40,7 @@ export async function replaceInteractive(editor: vscode.TextEditor): Promise<voi
   });
 
   const picked = await vscode.window.showQuickPick(items, {
-    placeHolder: `「${current}」をどの値に置換しますか?`,
+    placeHolder: vscode.l10n.t('Replace "{0}" with…', current),
     matchOnDescription: true,
   });
   if (!picked) {

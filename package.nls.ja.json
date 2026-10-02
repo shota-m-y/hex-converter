@@ -1,0 +1,10 @@
+{
+  "extension.description": "10進数・16進数・2進数・ASCII を、ホバー・ショートカット・コンバーター画面で素早く変換",
+  "command.showPopup": "選択範囲 / カーソル位置の変換値をポップアップ表示",
+  "command.openConverter": "コンバーターを開く",
+  "command.replace": "選択範囲 / カーソル位置の値を変換して置換",
+  "command.copy": "値をコピー",
+  "command.replaceWith": "値を置換",
+  "config.hover.enabled": "マウスホバーで変換値を表示する。",
+  "config.hover.decimal": "接頭辞のない 10 進数にもホバーを表示する。(ショートカットでの表示には影響しません)"
+}

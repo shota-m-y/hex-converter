@@ -1,0 +1,16 @@
+{
+  "Copy": "コピー",
+  "Replace with this value": "この値に置換",
+  "As {0}": "{0} として変換",
+  "Hex Converter: no convertible value found": "Hex Converter: 変換できる値が見つかりません",
+  "Copied: {0}": "コピーしました: {0}",
+  "Replace \"{0}\" with…": "「{0}」をどの値に置換しますか?",
+  "two's complement": "2の補数",
+  "HEX bytes": "HEX バイト列",
+  "Type in any field and the others update instantly.": "どの欄に入力しても、他の欄がリアルタイムに更新されます。",
+  "Number": "数値",
+  "Signed": "符号付き",
+  "Click a bit to toggle it": "ビットをクリックで反転",
+  "Text ⇄ ASCII codes": "テキスト ⇄ ASCII コード",
+  "Copied": "コピーしました"
+}

@@ -27,7 +27,7 @@ export class ConverterPanel {
   }
 
   private constructor(private readonly panel: vscode.WebviewPanel, context: vscode.ExtensionContext) {
-    panel.iconPath = new vscode.ThemeIcon('arrow-swap');
+    panel.iconPath = vscode.Uri.joinPath(context.extensionUri, 'images', 'icon.png');
     panel.webview.html = this.html(context.extensionUri);
     panel.onDidDispose(() => (ConverterPanel.current = undefined));
     panel.webview.onDidReceiveMessage((message) => {
@@ -58,6 +58,7 @@ export class ConverterPanel {
   private html(extensionUri: vscode.Uri): string {
     const webview = this.panel.webview;
     const asset = (name: string) => webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, 'media', name));
+    const t = vscode.l10n.t;
     const nonce = Array.from({ length: 32 }, () => Math.floor(Math.random() * 36).toString(36)).join('');
 
     const field = (id: string, label: string, placeholder: string, hint = '') => `
@@ -65,17 +66,17 @@ export class ConverterPanel {
           <span class="chip">${label}</span>
           <input id="${id}" type="text" spellcheck="false" autocomplete="off" placeholder="${placeholder}">
           <span class="hint">${hint}</span>
-          <button class="copy" data-copy="${id}" title="コピー" type="button">⧉</button>
+          <button class="copy" data-copy="${id}" title="${t('Copy')}" type="button">⧉</button>
         </label>`;
     const area = (id: string, label: string, placeholder: string) => `
         <label class="field area" data-base="${label.toLowerCase()}">
           <span class="chip">${label}</span>
           <textarea id="${id}" rows="2" spellcheck="false" placeholder="${placeholder}"></textarea>
-          <button class="copy" data-copy="${id}" title="コピー" type="button">⧉</button>
+          <button class="copy" data-copy="${id}" title="${t('Copy')}" type="button">⧉</button>
         </label>`;
 
     return `<!DOCTYPE html>
-<html lang="ja">
+<html lang="${vscode.env.language}">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
@@ -89,13 +90,13 @@ export class ConverterPanel {
       <div class="logo">0x</div>
       <div>
         <h1>Hex Converter</h1>
-        <p>どの欄に入力しても、他の欄がリアルタイムに更新されます。</p>
+        <p>${t('Type in any field and the others update instantly.')}</p>
       </div>
     </header>
 
     <section class="card">
       <div class="card-head">
-        <h2>数値</h2>
+        <h2>${t('Number')}</h2>
         <div class="segmented" id="widths">
           <button type="button" data-width="8">8</button>
           <button type="button" data-width="16">16</button>
@@ -110,15 +111,15 @@ export class ConverterPanel {
       ${field('oct', 'OCT', '377')}
       ${field('chr', 'ASCII', 'A')}
       <div class="meta">
-        <span>符号付き <b id="signed">0</b></span>
-        <span class="muted">ビットをクリックで反転</span>
+        <span>${t('Signed')} <b id="signed">0</b></span>
+        <span class="muted">${t('Click a bit to toggle it')}</span>
       </div>
       <div class="bits" id="bits"></div>
     </section>
 
     <section class="card">
       <div class="card-head">
-        <h2>テキスト ⇄ ASCII コード</h2>
+        <h2>${t('Text ⇄ ASCII codes')}</h2>
         <span class="muted" id="byteCount">0 byte</span>
       </div>
       ${area('txt', 'TEXT', 'Hello')}
@@ -127,7 +128,7 @@ export class ConverterPanel {
       ${area('tbin', 'BIN', '01001000 01100101 …')}
     </section>
   </main>
-  <div id="toast">コピーしました</div>
+  <div id="toast">${t('Copied')}</div>
   <script nonce="${nonce}" src="${asset('main.js')}"></script>
 </body>
 </html>`;
