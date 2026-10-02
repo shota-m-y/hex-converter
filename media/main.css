@@ -1,0 +1,307 @@
+:root {
+  --accent-a: #7c5cff;
+  --accent-b: #22d3ee;
+  --dec: #60a5fa;
+  --hex: #a78bfa;
+  --bin: #34d399;
+  --oct: #fbbf24;
+  --ascii: #f472b6;
+  --text: #f472b6;
+  --border: color-mix(in srgb, var(--vscode-foreground) 14%, transparent);
+  --surface: color-mix(in srgb, var(--vscode-foreground) 5%, transparent);
+  --mono: var(--vscode-editor-font-family, 'Cascadia Code', Consolas, monospace);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--vscode-foreground);
+  background: var(--vscode-editor-background);
+  font-family: var(--vscode-font-family);
+  font-size: 13px;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font: 700 17px var(--mono);
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  box-shadow: 0 8px 24px -8px var(--accent-a);
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+}
+
+header p {
+  margin: 2px 0 0;
+  opacity: 0.65;
+}
+
+.card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.muted {
+  opacity: 0.55;
+  font-size: 12px;
+}
+
+.segmented {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.segmented button {
+  min-width: 32px;
+  padding: 3px 8px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: inherit;
+  font: 600 12px var(--mono);
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.segmented button:hover {
+  opacity: 1;
+}
+
+.segmented button.active {
+  opacity: 1;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+}
+
+.segmented .unit {
+  padding: 0 6px 0 4px;
+  font-size: 11px;
+  opacity: 0.55;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 6px 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--vscode-input-background);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field.area {
+  align-items: flex-start;
+}
+
+.field:focus-within {
+  border-color: var(--chip);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--chip) 22%, transparent);
+}
+
+.field.invalid {
+  border-color: var(--vscode-inputValidation-errorBorder, #f14c4c);
+  box-shadow: 0 0 0 3px color-mix(in srgb, #f14c4c 20%, transparent);
+}
+
+.field[data-base='dec'] { --chip: var(--dec); }
+.field[data-base='hex'] { --chip: var(--hex); }
+.field[data-base='bin'] { --chip: var(--bin); }
+.field[data-base='oct'] { --chip: var(--oct); }
+.field[data-base='ascii'] { --chip: var(--ascii); }
+.field[data-base='text'] { --chip: var(--text); }
+
+.chip {
+  flex: none;
+  width: 48px;
+  padding: 4px 0;
+  border-radius: 8px;
+  text-align: center;
+  font: 700 10.5px var(--mono);
+  letter-spacing: 0.06em;
+  color: var(--chip);
+  background: color-mix(in srgb, var(--chip) 16%, transparent);
+}
+
+.field input,
+.field textarea {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 0;
+  border: 0;
+  outline: 0;
+  resize: vertical;
+  background: transparent;
+  color: var(--vscode-input-foreground);
+  font: 14px/1.5 var(--mono);
+}
+
+.field ::placeholder {
+  color: var(--vscode-input-placeholderForeground);
+  opacity: 0.6;
+}
+
+.hint {
+  flex: none;
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.copy {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.copy:hover {
+  opacity: 1;
+  background: color-mix(in srgb, var(--vscode-foreground) 12%, transparent);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.meta b {
+  margin-left: 6px;
+  font: 600 13px var(--mono);
+}
+
+.bits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.nibble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.nibble-bits {
+  display: flex;
+  gap: 3px;
+}
+
+.nibble-hex {
+  font: 600 11px var(--mono);
+  opacity: 0.5;
+}
+
+.bit {
+  width: 20px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: 600 12px var(--mono);
+  cursor: pointer;
+  opacity: 0.55;
+  transition: transform 0.08s, background 0.15s, opacity 0.15s;
+}
+
+.bit:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.bit.on {
+  opacity: 1;
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+}
+
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  box-shadow: 0 10px 30px -10px var(--accent-a);
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

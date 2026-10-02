@@ -1,0 +1,123 @@
+{
+  "name": "hex-converter",
+  "displayName": "Hex Converter",
+  "description": "10進数・16進数・2進数・ASCII をホバーやショートカットで素早く変換",
+  "version": "0.1.0",
+  "publisher": "shota",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "hex",
+    "binary",
+    "decimal",
+    "ascii",
+    "converter"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "hexConverter.showPopup",
+        "title": "選択範囲 / カーソル位置の変換値をポップアップ表示",
+        "category": "Hex Converter"
+      },
+      {
+        "command": "hexConverter.openConverter",
+        "title": "コンバーターを開く",
+        "category": "Hex Converter",
+        "icon": "$(arrow-swap)"
+      },
+      {
+        "command": "hexConverter.replace",
+        "title": "選択範囲 / カーソル位置の値を変換して置換",
+        "category": "Hex Converter"
+      },
+      {
+        "command": "hexConverter.copy",
+        "title": "値をコピー",
+        "category": "Hex Converter"
+      },
+      {
+        "command": "hexConverter.replaceWith",
+        "title": "値を置換",
+        "category": "Hex Converter"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "hexConverter.showPopup",
+        "key": "ctrl+alt+h",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "hexConverter.replace",
+        "key": "ctrl+alt+j",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "hexConverter.openConverter",
+        "key": "ctrl+alt+shift+h"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "hexConverter.copy",
+          "when": "false"
+        },
+        {
+          "command": "hexConverter.replaceWith",
+          "when": "false"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "hexConverter.showPopup",
+          "group": "9_hexConverter@1"
+        },
+        {
+          "command": "hexConverter.replace",
+          "when": "!editorReadonly",
+          "group": "9_hexConverter@2"
+        },
+        {
+          "command": "hexConverter.openConverter",
+          "group": "9_hexConverter@3"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Hex Converter",
+      "properties": {
+        "hexConverter.hover.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "マウスホバーで変換値を表示する。"
+        },
+        "hexConverter.hover.decimal": {
+          "type": "boolean",
+          "default": true,
+          "description": "接頭辞のない 10 進数にもホバーを表示する。(ショートカットでの表示には影響しません)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "~5.4.5"
+  }
+}
