@@ -4,7 +4,7 @@
 
 数値にマウスを乗せる、選択してショートカットを押す、その場で書き換える。`0x40011000` や `0b10110010`、`"Hello"` のバイト列を日に何度も確認する、ファームウェア・組み込み・低レイヤーの開発向けです。
 
-[English](https://github.com/nakayams/hex-converter/blob/main/README.md)
+[English](https://github.com/shota-m-y/hex-converter/blob/main/README.md)
 
 ## 機能
 
@@ -84,11 +84,11 @@ UI は英語と日本語に対応しており、VS Code の表示言語に従い
 
 ## フィードバック
 
-不具合の報告や要望は、[GitHub の issue](https://github.com/nakayams/hex-converter/issues) からお願いします。
+不具合の報告や要望は、[GitHub の issue](https://github.com/shota-m-y/hex-converter/issues) からお願いします。
 
 ## ライセンス
 
-[MIT](https://github.com/nakayams/hex-converter/blob/main/LICENSE)
+[MIT](https://github.com/shota-m-y/hex-converter/blob/main/LICENSE)
 
 ## 開発
 

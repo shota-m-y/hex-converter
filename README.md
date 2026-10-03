@@ -4,7 +4,7 @@
 
 Hover over a literal, select a value and press a shortcut, or rewrite it in place. Built for firmware, embedded and low-level work where you need `0x40011000`, `0b10110010` and `"Hello"` as bytes several times a day.
 
-[日本語の説明はこちら](https://github.com/nakayams/hex-converter/blob/main/README.ja.md)
+[日本語の説明はこちら](https://github.com/shota-m-y/hex-converter/blob/main/README.ja.md)
 
 ## Features
 
@@ -84,8 +84,8 @@ The UI is available in English and Japanese, following VS Code's display languag
 
 ## Feedback
 
-Found a bug or have an idea? Please open an issue on [GitHub](https://github.com/nakayams/hex-converter/issues).
+Found a bug or have an idea? Please open an issue on [GitHub](https://github.com/shota-m-y/hex-converter/issues).
 
 ## License
 
-[MIT](https://github.com/nakayams/hex-converter/blob/main/LICENSE)
+[MIT](https://github.com/shota-m-y/hex-converter/blob/main/LICENSE)
