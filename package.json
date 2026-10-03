@@ -6,6 +6,10 @@
   "publisher": "shota-m-y",
   "license": "MIT",
   "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#1E1B3A",
+    "theme": "dark"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nakayams/hex-converter.git"
@@ -18,14 +22,24 @@
     "vscode": "^1.82.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Programming Languages"
   ],
   "keywords": [
     "hex",
+    "hexadecimal",
     "binary",
     "decimal",
+    "octal",
     "ascii",
-    "converter"
+    "converter",
+    "number",
+    "bits",
+    "two's complement",
+    "embedded",
+    "firmware",
+    "verilog",
+    "hover"
   ],
   "activationEvents": [
     "onStartupFinished"

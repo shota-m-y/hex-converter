@@ -1,5 +1,5 @@
 {
-  "extension.description": "10進数・16進数・2進数・ASCII を、ホバー・ショートカット・コンバーター画面で素早く変換",
+  "extension.description": "数値を 10 進・16 進・2 進・8 進・ASCII でホバー・ショートカット・コンバーター画面から確認し、その場で置換もできる拡張機能",
   "command.showPopup": "選択範囲 / カーソル位置の変換値をポップアップ表示",
   "command.openConverter": "コンバーターを開く",
   "command.replace": "選択範囲 / カーソル位置の値を変換して置換",

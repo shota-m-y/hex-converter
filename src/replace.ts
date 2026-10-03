@@ -61,7 +61,10 @@ export async function replaceWith(uri: unknown, position: unknown, text: unknown
   if (typeof uri !== 'string' || typeof text !== 'string' || !Array.isArray(position) || position.length !== 4) {
     return;
   }
-  const editor = vscode.window.visibleTextEditors.find((e) => e.document.uri.toString() === uri);
+  // Command-link arguments get URI-decoded twice, so "file:///c%3A/..." can arrive as "file:///c:/...";
+  // round-trip it through Uri.parse to compare in canonical form.
+  const target = vscode.Uri.parse(uri).toString();
+  const editor = vscode.window.visibleTextEditors.find((e) => e.document.uri.toString() === target);
   if (!editor) {
     return;
   }

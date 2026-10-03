@@ -1,5 +1,5 @@
 {
-  "extension.description": "Convert between decimal, hex, binary and ASCII on hover, by shortcut, or in a converter panel.",
+  "extension.description": "See any number in decimal, hex, binary, octal and ASCII on hover, by shortcut, or in a converter panel — and replace it in place.",
   "command.showPopup": "Show Conversions for Selection / Cursor",
   "command.openConverter": "Open Converter",
   "command.replace": "Convert and Replace Selection / Value at Cursor",
